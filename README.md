@@ -27,7 +27,7 @@
 	e: The IPD patient (aka Admitted Patient) will have following Services
 			- Assigned Doctor
 			- Nurse
-			- Room (General (5-to-10 Beds), Shared (1-to-5 Beds), Special (with or w/o AC) )			
+			-  Room (General (5-to-10 Beds), Shared (1-to-5 Beds), Special (with or w/o AC) )			
 			- Medical Store Access
 			- Cantees Access
 	f: When The IPD Patient is Dischanged the bill MUST be calculated based on the Following changed
