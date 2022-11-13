@@ -1,0 +1,75 @@
+Create Database UProduct;
+Create Table Customer (
+   CustId int IDENTITY(1,1) Primary Key,
+   Name  varchar(200) Not Null,
+   Email varchar(100) Not Null,
+   MobNo int Not Null,
+   Address varchar(100) Not Null,
+);
+Create Table Product(
+  ProductId int IDENTITY(1,1) Primary Key,
+  ProductName varchar(400) Not Null,
+  CategoryName varchar(100) Not Null,
+  UnitPrice int Not Null,
+);
+Create Table Orders(
+  OrderId int IDENTITY(1,1) Primary Key,
+  Quantity  int Not Null,
+  TotalPrice  int Not Null,
+  OrderDate datetime Not Null,
+  IsOrderApproved int,
+  IsOrderDispatched int,
+  CustId int Not null References Customer(CustId), -- Syntax for Foreign Key
+  ProductId int Not null References Product(ProductId)
+);
+
+
+Create table Doctor(
+Doctor_Id INT IDENTITY(1,1) PRIMARY KEY ,
+Name varchar(20),
+Fees INT,
+Specialization varchar(30),
+Emp_Type varchar(20)
+);
+create table Address (Address_Id int primary key IDENTITY(1,1),
+					  House_No int,
+					  Society varchar(20),
+					  Area varchar(30),
+					  City varchar(20),
+					  State varchar(20),
+					  DOB DateTime);
+Create table Charges (Charges_Id int primary key IDENTITY(1,1),
+					  Room_Charges int,
+					  Nurse_Charges int,
+					  Doctor_Charges int,
+					  Medicine_Charges int,
+					  Laundary_Charges int,
+					  Canteen_Charges int
+					 );
+CREATE TABLE PATIENT(
+	Patient_Id int IDENTITY(1,1) Primary Key,
+	Address_Id int,
+	FOREIGN KEY (Address_Id) REFERENCES Address(Address_Id),
+	First_Name varchar(20),
+	Middle_Name varchar(20),
+	Last_Name varchar(20),
+	Mobile_No varchar(10),
+	Email varchar(30),
+	Gender varchar(6),
+	Age_Type varchar(5),
+	TotalFee int,
+	Doctor_Id int,
+	FOREIGN KEY (Doctor_Id) REFERENCES Doctor(Doctor_Id),
+	IsAdmitted bit);
+CREATE table IPD_Patient (
+Patient_Id INT PRIMARY KEY FOREIGN KEY REFERENCES PATIENT(Patient_Id),
+Charges_Id INT FOREIGN KEY REFERENCES Charges(Charges_Id),
+Nurse BIT ,
+Admit_Date DATETIME,
+Discharge_Date DATETIME,
+Room VARCHAR(20),
+Medical_Store_Access BIT,
+Canteen_Access BIT,
+No_of_Days INT,
+No_of_Visits INT
+);
